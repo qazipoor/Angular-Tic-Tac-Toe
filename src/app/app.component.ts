@@ -13,11 +13,10 @@ import { Component } from '@angular/core';
       Winner: <span>{{ winner }}</span>
     </div>
     <button (click)="resetGame()">Reset Game</button>
-    <section>
-      <div class="row" *ngFor="let row of [0, 1, 2]">
+    <section style="margin: 10px auto">
+      <div class="board" *ngFor="let row of [0, 1, 2]">
         <button
           *ngFor="let col of [0, 1, 2]"
-          class="cell"
           style="width:40px;height:40px;"
           (click)="switch(row, col)"
         >
@@ -25,20 +24,18 @@ import { Component } from '@angular/core';
         </button>
       </div>
     </section>
-
-    <pre>{{ grid | json }}</pre>
   `,
   styles: [
     `
-      .cell {
-        vertical-align: top;
+      .board {
+        display: flex;
       }
     `,
   ],
 })
 export class AppComponent {
   title = 'angular-tic-tac-toe';
-  grid: any = [
+  grid: string[][] = [
     ['', '', ''],
     ['', '', ''],
     ['', '', ''],
@@ -103,7 +100,7 @@ export class AppComponent {
 
   getWinner(combo: number, currentPlayer: string): string {
     if (combo > this.winningCombos.length - 1) return '';
-    const map: any = [];
+    const map: string[] = [];
 
     for (let i = 0; i < this.winningCombos[combo].length; i++) {
       const [row, col] = this.winningCombos[combo][i];
