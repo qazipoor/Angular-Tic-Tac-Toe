@@ -108,8 +108,6 @@ export class AppComponent {
       map.push(this.grid[row][col]);
     }
 
-    console.log(combo);
-
     return map.every((cell: string) => cell === currentPlayer)
       ? this.winner = currentPlayer
       : this.getWinner(combo + 1, currentPlayer);
