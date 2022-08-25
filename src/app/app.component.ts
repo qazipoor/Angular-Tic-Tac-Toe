@@ -108,11 +108,11 @@ export class AppComponent {
       map.push(this.grid[row][col]);
     }
 
-    const foundWinner = map.every((cell: string) => cell === currentPlayer);
+    console.log(combo);
 
-    if (foundWinner) this.winner = currentPlayer;
-
-    return this.getWinner(combo + 1, currentPlayer);
+    return map.every((cell: string) => cell === currentPlayer)
+      ? this.winner = currentPlayer
+      : this.getWinner(combo + 1, currentPlayer);
   }
 
   resetGame() {
